@@ -1,0 +1,1582 @@
+> barchart(Var1 ~ Freq | Var2, data = dftable, layout = c(4,1))
+> dotplot(Var1 ~ Freq | Var2, dftable)
+> dotplot(Var1 ~ Freq, data = dftable,
++ groups = Var2, type = "o",
++ auto.key = list(space = "right", points = T, lines = T))
+> library(datasets)
+> airquality
+    Ozone Solar.R Wind Temp
+1      41     190  7.4   67
+2      36     118  8.0   72
+3      12     149 12.6   74
+4      18     313 11.5   62
+5      NA      NA 14.3   56
+6      28      NA 14.9   66
+7      23     299  8.6   65
+8      19      99 13.8   59
+9       8      19 20.1   61
+10     NA     194  8.6   69
+11      7      NA  6.9   74
+12     16     256  9.7   69
+13     11     290  9.2   66
+14     14     274 10.9   68
+15     18      65 13.2   58
+16     14     334 11.5   64
+17     34     307 12.0   66
+18      6      78 18.4   57
+19     30     322 11.5   68
+20     11      44  9.7   62
+21      1       8  9.7   59
+22     11     320 16.6   73
+23      4      25  9.7   61
+24     32      92 12.0   61
+25     NA      66 16.6   57
+26     NA     266 14.9   58
+27     NA      NA  8.0   57
+28     23      13 12.0   67
+29     45     252 14.9   81
+30    115     223  5.7   79
+31     37     279  7.4   76
+32     NA     286  8.6   78
+33     NA     287  9.7   74
+34     NA     242 16.1   67
+35     NA     186  9.2   84
+36     NA     220  8.6   85
+37     NA     264 14.3   79
+38     29     127  9.7   82
+39     NA     273  6.9   87
+40     71     291 13.8   90
+41     39     323 11.5   87
+42     NA     259 10.9   93
+43     NA     250  9.2   92
+44     23     148  8.0   82
+45     NA     332 13.8   80
+46     NA     322 11.5   79
+47     21     191 14.9   77
+48     37     284 20.7   72
+49     20      37  9.2   65
+50     12     120 11.5   73
+51     13     137 10.3   76
+52     NA     150  6.3   77
+53     NA      59  1.7   76
+54     NA      91  4.6   76
+55     NA     250  6.3   76
+56     NA     135  8.0   75
+57     NA     127  8.0   78
+58     NA      47 10.3   73
+59     NA      98 11.5   80
+60     NA      31 14.9   77
+61     NA     138  8.0   83
+62    135     269  4.1   84
+63     49     248  9.2   85
+64     32     236  9.2   81
+65     NA     101 10.9   84
+66     64     175  4.6   83
+67     40     314 10.9   83
+68     77     276  5.1   88
+69     97     267  6.3   92
+70     97     272  5.7   92
+71     85     175  7.4   89
+72     NA     139  8.6   82
+73     10     264 14.3   73
+74     27     175 14.9   81
+75     NA     291 14.9   91
+76      7      48 14.3   80
+77     48     260  6.9   81
+78     35     274 10.3   82
+79     61     285  6.3   84
+80     79     187  5.1   87
+81     63     220 11.5   85
+82     16       7  6.9   74
+83     NA     258  9.7   81
+84     NA     295 11.5   82
+85     80     294  8.6   86
+86    108     223  8.0   85
+87     20      81  8.6   82
+88     52      82 12.0   86
+89     82     213  7.4   88
+90     50     275  7.4   86
+91     64     253  7.4   83
+92     59     254  9.2   81
+93     39      83  6.9   81
+94      9      24 13.8   81
+95     16      77  7.4   82
+96     78      NA  6.9   86
+97     35      NA  7.4   85
+98     66      NA  4.6   87
+99    122     255  4.0   89
+100    89     229 10.3   90
+101   110     207  8.0   90
+102    NA     222  8.6   92
+103    NA     137 11.5   86
+104    44     192 11.5   86
+105    28     273 11.5   82
+106    65     157  9.7   80
+107    NA      64 11.5   79
+108    22      71 10.3   77
+109    59      51  6.3   79
+110    23     115  7.4   76
+111    31     244 10.9   78
+112    44     190 10.3   78
+113    21     259 15.5   77
+114     9      36 14.3   72
+115    NA     255 12.6   75
+116    45     212  9.7   79
+117   168     238  3.4   81
+118    73     215  8.0   86
+119    NA     153  5.7   88
+120    76     203  9.7   97
+121   118     225  2.3   94
+122    84     237  6.3   96
+123    85     188  6.3   94
+124    96     167  6.9   91
+125    78     197  5.1   92
+126    73     183  2.8   93
+127    91     189  4.6   93
+128    47      95  7.4   87
+129    32      92 15.5   84
+130    20     252 10.9   80
+131    23     220 10.3   78
+132    21     230 10.9   75
+133    24     259  9.7   73
+134    44     236 14.9   81
+135    21     259 15.5   76
+136    28     238  6.3   77
+137     9      24 10.9   71
+138    13     112 11.5   71
+139    46     237  6.9   78
+140    18     224 13.8   67
+141    13      27 10.3   76
+142    24     238 10.3   68
+143    16     201  8.0   82
+144    13     238 12.6   64
+145    23      14  9.2   71
+146    36     139 10.3   81
+147     7      49 10.3   69
+148    14      20 16.6   63
+149    30     193  6.9   70
+150    NA     145 13.2   77
+151    14     191 14.3   75
+152    18     131  8.0   76
+153    20     223 11.5   68
+    Month Day
+1       5   1
+2       5   2
+3       5   3
+4       5   4
+5       5   5
+6       5   6
+7       5   7
+8       5   8
+9       5   9
+10      5  10
+11      5  11
+12      5  12
+13      5  13
+14      5  14
+15      5  15
+16      5  16
+17      5  17
+18      5  18
+19      5  19
+20      5  20
+21      5  21
+22      5  22
+23      5  23
+24      5  24
+25      5  25
+26      5  26
+27      5  27
+28      5  28
+29      5  29
+30      5  30
+31      5  31
+32      6   1
+33      6   2
+34      6   3
+35      6   4
+36      6   5
+37      6   6
+38      6   7
+39      6   8
+40      6   9
+41      6  10
+42      6  11
+43      6  12
+44      6  13
+45      6  14
+46      6  15
+47      6  16
+48      6  17
+49      6  18
+50      6  19
+51      6  20
+52      6  21
+53      6  22
+54      6  23
+55      6  24
+56      6  25
+57      6  26
+58      6  27
+59      6  28
+60      6  29
+61      6  30
+62      7   1
+63      7   2
+64      7   3
+65      7   4
+66      7   5
+67      7   6
+68      7   7
+69      7   8
+70      7   9
+71      7  10
+72      7  11
+73      7  12
+74      7  13
+75      7  14
+76      7  15
+77      7  16
+78      7  17
+79      7  18
+80      7  19
+81      7  20
+82      7  21
+83      7  22
+84      7  23
+85      7  24
+86      7  25
+87      7  26
+88      7  27
+89      7  28
+90      7  29
+91      7  30
+92      7  31
+93      8   1
+94      8   2
+95      8   3
+96      8   4
+97      8   5
+98      8   6
+99      8   7
+100     8   8
+101     8   9
+102     8  10
+103     8  11
+104     8  12
+105     8  13
+106     8  14
+107     8  15
+108     8  16
+109     8  17
+110     8  18
+111     8  19
+112     8  20
+113     8  21
+114     8  22
+115     8  23
+116     8  24
+117     8  25
+118     8  26
+119     8  27
+120     8  28
+121     8  29
+122     8  30
+123     8  31
+124     9   1
+125     9   2
+126     9   3
+127     9   4
+128     9   5
+129     9   6
+130     9   7
+131     9   8
+132     9   9
+133     9  10
+134     9  11
+135     9  12
+136     9  13
+137     9  14
+138     9  15
+139     9  16
+140     9  17
+141     9  18
+142     9  19
+143     9  20
+144     9  21
+145     9  22
+146     9  23
+147     9  24
+148     9  25
+149     9  26
+150     9  27
+151     9  28
+152     9  29
+153     9  30
+> xyplot(Ozone ~ Wind, data = airquality)
+> convert <- transform(airquality, Month = factor(Month))
+> xyplot(Ozone ~ Wind | Month, data = convert, layout = c(5,1))
+> xyplot(Ozone + Solar.R ~ Wind | factor(Month),
++ data = airquality,
++ col = c("blue", "red"),
++ layout = c(5, 1))
+> head(quakes)
+     lat   long depth mag
+1 -20.42 181.62   562 4.8
+2 -20.62 181.03   650 4.2
+3 -26.00 184.10    42 5.4
+4 -17.97 181.66   626 4.1
+5 -20.42 181.96   649 4.0
+6 -19.68 184.31   195 4.0
+  stations
+1       41
+2       15
+3       43
+4       19
+5       11
+6       12
+> xyplot(lat ~ long, data = quakes, pch = ".")
+> tplot <- xyplot(lat ~ long, data = quakes, pch = ".")
+> tplot <- update(tplot, main ="태평양에서 발생한 지진 위치")
+> print(tplot)
+> range(quakes$depth)
+[1]  40 680
+> quakes$depth2[quakes$depth >= 40 & quakes$depth <= 150] <- 1
+> quakes$depth2[quakes$depth >= 151 & quakes$depth <= 250] <- 2
+> quakes$depth2[quakes$depth >= 251 & quakes$depth <= 350] <- 3
+> quakes$depth2[quakes$depth >= 351 & quakes$depth <= 450] <- 4
+> quakes$depth2[quakes$depth >= 451 & quakes$depth <= 550] <- 5
+> quakes$depth2[quakes$depth >= 551 & quakes$depth <= 680] <- 6
+> convert <- transform(quakes, depth2 = factor(depth2))
+> xyplot(lat ~ long | depth2, data = convert)
+> depthgroup <- equal.count(quakes$depth, number = 5, overlap = 0)
+> depthgroup
+
+Data:
+   [1] 562 650  42 626 649 195
+   [7]  82 194 211 622 583 249
+  [13] 554 600 139 306  50 590
+  [19] 570 598 576 211 512 125
+  [25] 431 537 155 498 582 328
+  [31] 553  50 292 349  48 600
+  [37] 206 574 585 230 263  96
+  [43] 511  94 246  56 329  70
+  [49] 493 129 554 223  46 593
+  [55] 489 562 445 584 535 530
+  [61] 582 260 613  84 593 286
+  [67] 587 627 530  40 152 201
+  [73]  96 506 546 564 197 265
+  [79] 323 304  75 367 579 284
+  [85] 450 170 117 538 123  69
+  [91] 128 236 497 271 224 375
+  [97] 365 306  50 484 108 583
+ [103] 608  72 636 293  42 100
+ [109]  42 146 280 388 477 617
+ [115] 606 609  46  64 178 248
+ [121]  82  81 606 571 328  49
+ [127] 517 600  94 307 189 527
+ [133]  63 510 624  53  42 199
+ [139] 149 210 658 582 220 205
+ [145] 614 186  97  48 462 573
+ [151]  56 127 229 112 140 597
+ [157]  69 452  93 103 626 504
+ [163] 202  42  59  40 205 244
+ [169] 553 239 640 434 627  99
+ [175] 399 216 544 206 542 339
+ [181] 640  67 161 375 534  45
+ [187] 309 576 523 290 234 223
+ [193] 569 605 422 637 204 175
+ [199] 538 595 360 445 367 190
+ [205] 629 261 603 508 350 533
+ [211] 411 338 226  93 535 573
+ [217] 186 618 242 342  90 130
+ [223]  65 397 505  71 207 154
+ [229] 232 106 664 397 431  57
+ [235] 525 574  74 617  44 470
+ [241] 298 148  48 107 218 597
+ [247] 619  46 553 150 180  97
+ [253] 587 106 179 680 304 254
+ [259] 521 526 270 548 158 562
+ [265] 300  65 130  82 482 607
+ [271] 105 590 498 504 577 529
+ [277] 528 492 561 579 413 565
+ [283] 138 383 260 522 671 123
+ [289] 572 529 641  67 546 507
+ [295] 158 148 562 601 175 260
+ [301] 654 242 126 555 637 500
+ [307] 515 583 501  55 644 641
+ [313] 442 464 200 479 497 218
+ [319] 492 325 123 210 575 129
+ [325]  74  49 483  93 118  83
+ [331]  61 534  42 219 544  56
+ [337]  68  69  45  43  65  80
+ [343]  51  68  69 103  61  69
+ [349]  51  55  54  59 573  56
+ [355]  65 587 150 403  60 130
+ [361] 590 135 583 406 221  40
+ [367] 502 103 423 158 527 219
+ [373] 536 630 249  48 553 112
+ [379] 153 130 188 226 124 204
+ [385] 605 221 573 401 195  56
+ [391] 102  44 556 417 591 646
+ [397] 565  52 535 641  41 109
+ [403]  40 548 118 593 492 123
+ [409] 475 153 112  99  66 481
+ [415] 139 211 151 211 246  47
+ [421] 484 119  70 579  57 176
+ [427] 602 488 149 546 343 530
+ [433] 563 537 325  80 259 476
+ [439] 499 257 165 136 146 524
+ [445]  82  90 138 499 538 467
+ [451] 184 538  45 237 162 136
+ [457] 604 107 538 639  45 636
+ [463] 628 632 215 556 135 297
+ [469] 568 168 269 143  95 142
+ [475] 104 169  65  54 474 125
+ [481] 617 294 180  47 593  94
+ [487] 201 537 594 638  80 211
+ [493] 520 384 223  54  57  49
+ [499] 508 242  62  63 203 132
+ [505] 543 589  51  45  63 485
+ [511]  66  58  70 541 598  50
+ [517] 102 144  58 460  69 570
+ [523]  70 137  41 586 140 213
+ [529] 393  51  64  45 296  50
+ [535]  44  68 549 150  47 543
+ [541]  40 100  85  98  58 125
+ [547]  89 590  49 543 506  40
+ [553]  42  76  63 104  93  64
+ [559] 587  83 579  40  62 273
+ [565] 393 264 174 574 309  75
+ [571] 195  44 420  63 609  40
+ [577] 575 559 405  70  41 605
+ [583] 130 577 599  82  50 480
+ [589] 559 566 611 409 209  70
+ [595]  74 134 150 406 243  89
+ [601]  53  68 605 615 546 176
+ [607]  52  66 377 186  51  67
+ [613] 234 597  64 511  47  49
+ [619] 546  75  60 278 550 518
+ [625] 116 518  75 491  56 376
+ [631] 584  48  53 617 294 417
+ [637] 280 332  85 525 613 182
+ [643]  57  79 595 164 148  82
+ [649] 153 556 649 651  93 533
+ [655] 642  47 548 154 627 622
+ [661] 286 390 624 539 624 631
+ [667] 631 299 498 255 539 195
+ [673] 594 573 128 137 143 511
+ [679] 564 559 248 210 390 616
+ [685]  98 218 655 356 564 548
+ [691] 655 385 518 598 476 579
+ [697] 603 249 208 587 221 545
+ [703] 586 488 246  61 524 104
+ [709] 271 487  83 183  55 166
+ [715] 586 618 524 133 201 383
+ [721]  86 555 605 609 204 287
+ [727] 390 348 550 487 578 361
+ [733] 275 498 162  78 134 554
+ [739] 608 367 599  45  50 162
+ [745] 302  57 203  66 591 440
+ [751] 611  57 627  89 500 264
+ [757] 127  85  50  75 182 619
+ [763] 223 156  46  50 230 184
+ [769] 188  80  86 391 199 592
+ [775] 595 618 213 616 175 589
+ [781]  83 119  70  74  40  87
+ [787]  63 537  47 490 593 644
+ [793] 576 199 589 178 248 500
+ [799]  71 568  42 510  97 663
+ [805] 625 210 557 582 402 474
+ [811] 577  56  43 118 544 532
+ [817] 237 111 595 603 505 100
+ [823] 587 364 100 350 228  93
+ [829]  66 225 334  70 220 397
+ [835] 326 121 209 510  54 242
+ [841] 574  82 102  43 432 580
+ [847] 464 479 581 513  77  68
+ [853]  71  68 586 243 658 315
+ [859] 210 278 638 615 567 560
+ [865]  99 266 397 180  40 242
+ [871] 530 133  62 580 530 566
+ [877] 501 548 587 592 221 560
+ [883]  94 139 162 562 204  56
+ [889]  49 100 231 601  42 180
+ [895] 559 524  69 594 262 538
+ [901] 331  48  47 558 524 545
+ [907] 477 129 268 117 541 112
+ [913] 162 609  76  61 202  90
+ [919] 133 589 190 138 598 600
+ [925] 162 626 137  57 201  69
+ [931] 219 553 524  51 107  44
+ [937] 574 128 568 583 622 193
+ [943] 544 118  51  63 442  87
+ [949]  61  60 561 138 174 543
+ [955] 530 497  63  82 605 234
+ [961]  41  40 137 223 109 595
+ [967] 512 613  60  43 172  54
+ [973]  68 217 102 178 251  42
+ [979] 575  43 577  42  75  71
+ [985]  60 291 125  69 614 108
+ [991] 575 409 243 642  45 470
+ [997] 248 244  40 165
+
+Intervals:
+    min   max count
+1  39.5  80.5   203
+2  79.5 186.5   203
+3 185.5 397.5   203
+4 396.5 562.5   202
+5 562.5 680.5   200
+
+Overlap between adjacent intervals:
+[1] 4 3 4 0
+> xyplot(lat ~ long | depthgroup, data = quakes, 
++ main = "Earthquakes(depthgroup)",
++ ylab = "latitude", xlab = "longitude", 
++ pch = "@", col = "red")
+> cloud(depth ~ lat * long, data = quakes, 
++ zlim = rev(range(quakes$depth)),
++ xlab = "경도", ylab = "위도", zlab = "깊이")
+> cloud(depth ~ lat * long, data = quakes, 
++ zlim = rev(range(quakes$depth)),
++ screen = list(z = 45, x = -25),
++ main = "3차원 산점도",
++ xlab = "경도", ylab = "위도", zlab = "깊이")
+> install.packages("ggplot2")
+also installing the dependencies ‘rprojroot’, ‘pkgbuild’, ‘rstudioapi’, ‘diffobj’, ‘rematch2’, ‘brio’, ‘callr’, ‘desc’, ‘evaluate’, ‘jsonlite’, ‘pkgload’, ‘praise’, ‘processx’, ‘ps’, ‘waldo’, ‘colorspace’, ‘testthat’, ‘farver’, ‘labeling’, ‘munsell’, ‘RColorBrewer’, ‘viridisLite’, ‘gtable’, ‘isoband’, ‘scales’, ‘withr’
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/rprojroot_2.0.2.tgz'
+Content type 'application/x-gzip' length 96290 bytes (94 KB)
+==================================================
+downloaded 94 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/pkgbuild_1.1.0.tgz'
+Content type 'application/x-gzip' length 139362 bytes (136 KB)
+==================================================
+downloaded 136 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/rstudioapi_0.13.tgz'
+Content type 'application/x-gzip' length 271959 bytes (265 KB)
+==================================================
+downloaded 265 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/diffobj_0.3.2.tgz'
+Content type 'application/x-gzip' length 1006064 bytes (982 KB)
+==================================================
+downloaded 982 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/rematch2_2.1.2.tgz'
+Content type 'application/x-gzip' length 44807 bytes (43 KB)
+==================================================
+downloaded 43 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/brio_1.1.0.tgz'
+Content type 'application/x-gzip' length 36738 bytes (35 KB)
+==================================================
+downloaded 35 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/callr_3.5.1.tgz'
+Content type 'application/x-gzip' length 385435 bytes (376 KB)
+==================================================
+downloaded 376 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/desc_1.2.0.tgz'
+Content type 'application/x-gzip' length 285234 bytes (278 KB)
+==================================================
+downloaded 278 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/evaluate_0.14.tgz'
+Content type 'application/x-gzip' length 74355 bytes (72 KB)
+==================================================
+downloaded 72 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/jsonlite_1.7.1.tgz'
+Content type 'application/x-gzip' length 1123583 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/pkgload_1.1.0.tgz'
+Content type 'application/x-gzip' length 150877 bytes (147 KB)
+==================================================
+downloaded 147 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/praise_1.0.0.tgz'
+Content type 'application/x-gzip' length 16137 bytes (15 KB)
+==================================================
+downloaded 15 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/processx_3.4.4.tgz'
+Content type 'application/x-gzip' length 278496 bytes (271 KB)
+==================================================
+downloaded 271 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/ps_1.4.0.tgz'
+Content type 'application/x-gzip' length 251683 bytes (245 KB)
+==================================================
+downloaded 245 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/waldo_0.2.3.tgz'
+Content type 'application/x-gzip' length 70175 bytes (68 KB)
+==================================================
+downloaded 68 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/colorspace_2.0-0.tgz'
+Content type 'application/x-gzip' length 2616761 bytes (2.5 MB)
+==================================================
+downloaded 2.5 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/testthat_3.0.0.tgz'
+Content type 'application/x-gzip' length 2886442 bytes (2.8 MB)
+==================================================
+downloaded 2.8 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/farver_2.0.3.tgz'
+Content type 'application/x-gzip' length 1829409 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/labeling_0.4.2.tgz'
+Content type 'application/x-gzip' length 60296 bytes (58 KB)
+==================================================
+downloaded 58 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/munsell_0.5.0.tgz'
+Content type 'application/x-gzip' length 241504 bytes (235 KB)
+==================================================
+downloaded 235 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/RColorBrewer_1.1-2.tgz'
+Content type 'application/x-gzip' length 52944 bytes (51 KB)
+==================================================
+downloaded 51 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/viridisLite_0.3.0.tgz'
+Content type 'application/x-gzip' length 57005 bytes (55 KB)
+==================================================
+downloaded 55 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/gtable_0.3.0.tgz'
+Content type 'application/x-gzip' length 431500 bytes (421 KB)
+==================================================
+downloaded 421 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/isoband_0.2.2.tgz'
+Content type 'application/x-gzip' length 4016637 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/scales_1.1.1.tgz'
+Content type 'application/x-gzip' length 552885 bytes (539 KB)
+==================================================
+downloaded 539 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/withr_2.3.0.tgz'
+Content type 'application/x-gzip' length 205487 bytes (200 KB)
+==================================================
+downloaded 200 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/ggplot2_3.3.2.tgz'
+Content type 'application/x-gzip' length 4064530 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//Rtmp6UOkWW/downloaded_packages
+> library(ggplot2)
+> data(mpg)
+> table(mpg$drv)
+
+  4   f   r 
+103 106  25 
+> qplot(hwy, data = mpg, fill = drv)
+`stat_bin()` using `bins =
+30`. Pick better value with
+`binwidth`.
+> qplot(hwy, data = mpg, fill = drv, binwidth = 2)
+> qplot(hwy, data = mpg, fill = drv, facets = drv ~ ., binwidth = 2)
+> qplot(displ, hwy, data = mpg)
+> library(ggplot2)
+> install.packages("ggmap")
+also installing the dependencies ‘sys’, ‘askpass’, ‘sp’, ‘generics’, ‘tidyselect’, ‘curl’, ‘mime’, ‘openssl’, ‘cpp11’, ‘RgoogleMaps’, ‘png’, ‘plyr’, ‘rjson’, ‘jpeg’, ‘dplyr’, ‘bitops’, ‘httr’, ‘purrr’, ‘tidyr’
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/sys_3.4.tgz'
+Content type 'application/x-gzip' length 47291 bytes (46 KB)
+==================================================
+downloaded 46 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/askpass_1.1.tgz'
+Content type 'application/x-gzip' length 21511 bytes (21 KB)
+==================================================
+downloaded 21 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/sp_1.4-4.tgz'
+Content type 'application/x-gzip' length 1932488 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/generics_0.1.0.tgz'
+Content type 'application/x-gzip' length 69334 bytes (67 KB)
+==================================================
+downloaded 67 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/tidyselect_1.1.0.tgz'
+Content type 'application/x-gzip' length 197492 bytes (192 KB)
+==================================================
+downloaded 192 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/curl_4.3.tgz'
+Content type 'application/x-gzip' length 741519 bytes (724 KB)
+==================================================
+downloaded 724 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/mime_0.9.tgz'
+Content type 'application/x-gzip' length 35303 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/openssl_1.4.3.tgz'
+Content type 'application/x-gzip' length 2863764 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/cpp11_0.2.4.tgz'
+Content type 'application/x-gzip' length 154095 bytes (150 KB)
+==================================================
+downloaded 150 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/RgoogleMaps_1.4.5.3.tgz'
+Content type 'application/x-gzip' length 493083 bytes (481 KB)
+==================================================
+downloaded 481 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/png_0.1-7.tgz'
+Content type 'application/x-gzip' length 369557 bytes (360 KB)
+==================================================
+downloaded 360 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/plyr_1.8.6.tgz'
+Content type 'application/x-gzip' length 1012642 bytes (988 KB)
+==================================================
+downloaded 988 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/rjson_0.2.20.tgz'
+Content type 'application/x-gzip' length 191510 bytes (187 KB)
+==================================================
+downloaded 187 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/jpeg_0.1-8.1.tgz'
+Content type 'application/x-gzip' length 416504 bytes (406 KB)
+==================================================
+downloaded 406 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/dplyr_1.0.2.tgz'
+Content type 'application/x-gzip' length 1215871 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/bitops_1.0-6.tgz'
+Content type 'application/x-gzip' length 24529 bytes (23 KB)
+==================================================
+downloaded 23 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/httr_1.4.2.tgz'
+Content type 'application/x-gzip' length 498155 bytes (486 KB)
+==================================================
+downloaded 486 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/purrr_0.3.4.tgz'
+Content type 'application/x-gzip' length 417900 bytes (408 KB)
+==================================================
+downloaded 408 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/tidyr_1.1.2.tgz'
+Content type 'application/x-gzip' length 936440 bytes (914 KB)
+==================================================
+downloaded 914 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/ggmap_3.0.0.tgz'
+Content type 'application/x-gzip' length 4698491 bytes (4.5 MB)
+==================================================
+downloaded 4.5 MB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//Rtmp6UOkWW/downloaded_packages
+> library(ggmap)
+Google's Terms of Service: https://cloud.google.com/maps-platform/terms/.
+Please cite ggmap if you use it! See citation("ggmap") for details.
+> seoul <- c(left = 126.77, bottom = 37.40, 
++ right = 127.17, top = 37.70)
+> map <- get_stamenmap(seoul, zoom = 12, maptype = 'terrain')
+Source : http://tile.stamen.com/terrain/12/3490/1584.png
+Source : http://tile.stamen.com/terrain/12/3491/1584.png
+Source : http://tile.stamen.com/terrain/12/3492/1584.png
+Source : http://tile.stamen.com/terrain/12/3493/1584.png
+Source : http://tile.stamen.com/terrain/12/3494/1584.png
+Source : http://tile.stamen.com/terrain/12/3490/1585.png
+Source : http://tile.stamen.com/terrain/12/3491/1585.png
+Source : http://tile.stamen.com/terrain/12/3492/1585.png
+Source : http://tile.stamen.com/terrain/12/3493/1585.png
+Source : http://tile.stamen.com/terrain/12/3494/1585.png
+Source : http://tile.stamen.com/terrain/12/3490/1586.png
+Source : http://tile.stamen.com/terrain/12/3491/1586.png
+Source : http://tile.stamen.com/terrain/12/3492/1586.png
+Source : http://tile.stamen.com/terrain/12/3493/1586.png
+Source : http://tile.stamen.com/terrain/12/3494/1586.png
+Source : http://tile.stamen.com/terrain/12/3490/1587.png
+Source : http://tile.stamen.com/terrain/12/3491/1587.png
+Source : http://tile.stamen.com/terrain/12/3492/1587.png
+Source : http://tile.stamen.com/terrain/12/3493/1587.png
+Source : http://tile.stamen.com/terrain/12/3494/1587.png
+Source : http://tile.stamen.com/terrain/12/3490/1588.png
+Source : http://tile.stamen.com/terrain/12/3491/1588.png
+Source : http://tile.stamen.com/terrain/12/3492/1588.png
+Source : http://tile.stamen.com/terrain/12/3493/1588.png
+Source : http://tile.stamen.com/terrain/12/3494/1588.png
+> ggmap(map)
+> pop <- read.csv(file = "011population201901.csv", header = T)
+Error in make.names(col.names, unique = TRUE) : 
+  invalid multibyte string at '<c1><f6><bf><aa><b8><ed>'
+> library(stringr)
+> region <- pop$'지역명'
+Error: object 'pop' not found
+> lon <- pop$LON
+Error: object 'pop' not found
+> lat <- pop$LAT
+Error: object 'pop' not found
+> tot_pop <- as.numeric(str_replace_all(pop$'총인구수', ',', ''))
+Error in stri_replace_all_regex(string, pattern, fix_replacement(replacement),  : 
+  object 'pop' not found
+> df <- data.frame(region, lon, lat, tot_pop)
+Error in data.frame(region, lon, lat, tot_pop) : 
+  object 'region' not found
+> df
+function (x, df1, df2, ncp, log = FALSE) 
+{
+    if (missing(ncp)) 
+        .Call(C_df, x, df1, df2, log)
+    else .Call(C_dnf, x, df1, df2, ncp, log)
+}
+<bytecode: 0x7fa0a6a98130>
+<environment: namespace:stats>
+> df <- df[1:17, ]
+Error in df[1:17, ] : object of type 'closure' is not subsettable
+> df <- df[1:17]
+Error in df[1:17] : object of type 'closure' is not subsettable
+> pop <- read.csv(file = "011population201901.csv", header = T,fileEncoding = "euc-kr")
+> region <- pop$'지역명'
+> lon <- pop$LON
+> lat <- pop$LAT
+> tot_pop <- as.numeric(str_replace_all(pop$'총인구수', ',', ''))
+> df <- data.frame(region, lon, lat, tot_pop)
+> df
+             region      lon
+1      서울특별시   126.9895
+2      부산광역시   129.0447
+3      대구광역시   128.5667
+4      인천광역시   126.7052
+5      광주광역시   126.8515
+6      대전광역시   127.3888
+7      울산광역시   129.3114
+8    세종특별자치시 127.2908
+9          경기도   127.5293
+10         강원도   128.2039
+11       충청북도   127.4914
+12       충청남도   126.7989
+13       전라북도   127.1114
+14       전라남도   126.4629
+15       경상북도   128.6893
+16       경상남도   128.3910
+17 제주특별자치도   126.4983
+18             전체       NA
+        lat  tot_pop
+1  37.56510  9766288
+2  35.16277  3438259
+3  35.87975  2460382
+4  37.45622  2955916
+5  35.16008  1459832
+6  36.37310  1488725
+7  35.53874  1154786
+8  36.48086   316814
+9  37.42184 13090648
+10 37.86652  1541693
+11 36.63740  1599155
+12 36.52127  2125797
+13 35.82100  1834532
+14 34.81621  1878904
+15 36.35658  2674005
+16 35.22106  3373214
+17 33.48901   667337
+18       NA 51826287
+> df <- df[1:17, ]
+> df
+             region      lon
+1      서울특별시   126.9895
+2      부산광역시   129.0447
+3      대구광역시   128.5667
+4      인천광역시   126.7052
+5      광주광역시   126.8515
+6      대전광역시   127.3888
+7      울산광역시   129.3114
+8    세종특별자치시 127.2908
+9          경기도   127.5293
+10         강원도   128.2039
+11       충청북도   127.4914
+12       충청남도   126.7989
+13       전라북도   127.1114
+14       전라남도   126.4629
+15       경상북도   128.6893
+16       경상남도   128.3910
+17 제주특별자치도   126.4983
+        lat  tot_pop
+1  37.56510  9766288
+2  35.16277  3438259
+3  35.87975  2460382
+4  37.45622  2955916
+5  35.16008  1459832
+6  36.37310  1488725
+7  35.53874  1154786
+8  36.48086   316814
+9  37.42184 13090648
+10 37.86652  1541693
+11 36.63740  1599155
+12 36.52127  2125797
+13 35.82100  1834532
+14 34.81621  1878904
+15 36.35658  2674005
+16 35.22106  3373214
+17 33.48901   667337
+> daegu <- c(left = 123.4423013, bottom = 32.8528306,
++ right = 131.601445, top = 38.8714354)
+> map <- get_stamenmap(daegu, zoom = 7, maptype = 'watercolor')
+Source : http://tile.stamen.com/watercolor/7/107/48.jpg
+Source : http://tile.stamen.com/watercolor/7/108/48.jpg
+Source : http://tile.stamen.com/watercolor/7/109/48.jpg
+Source : http://tile.stamen.com/watercolor/7/110/48.jpg
+Source : http://tile.stamen.com/watercolor/7/107/49.jpg
+Source : http://tile.stamen.com/watercolor/7/108/49.jpg
+Source : http://tile.stamen.com/watercolor/7/109/49.jpg
+Source : http://tile.stamen.com/watercolor/7/110/49.jpg
+Source : http://tile.stamen.com/watercolor/7/107/50.jpg
+Source : http://tile.stamen.com/watercolor/7/108/50.jpg
+Source : http://tile.stamen.com/watercolor/7/109/50.jpg
+Source : http://tile.stamen.com/watercolor/7/110/50.jpg
+Source : http://tile.stamen.com/watercolor/7/107/51.jpg
+Source : http://tile.stamen.com/watercolor/7/108/51.jpg
+Source : http://tile.stamen.com/watercolor/7/109/51.jpg
+Source : http://tile.stamen.com/watercolor/7/110/51.jpg
+> layer1 <- ggmap(map)
+> layer1
+> layer3 <- layer2 + geom_text(data = df, 
++ aes(x = lon + 0.01, y = lat + 0.08,
++ label = region), size = 3)
+Error: object 'layer2' not found
+> layer3 <- layer1 + geom_text(data = df, 
++ aes(x = lon + 0.01, y = lat + 0.08,
++ label = region), size = 3)
+> layer3
+> ggsave("pop201901.png", scale = 1, width = 10.24, height = 7.68)
+> layer1 <- ggmap(map)
+> layer1
+> layer2<-layer1 + geom_point(data=df,)
+> layer2<-layer1 + geom_point(data=df,
++ aes(x=lon,ylat,)
++ color=factor(top_pop),
+Error: unexpected symbol in:
+"aes(x=lon,ylat,)
+color"
+> color=factor(top_pop),
+Error: unexpected ',' in "color=factor(top_pop),"
+> aes(x=lon,ylat,)
+Aesthetic mapping: 
+* `x` -> `lon`
+* `y` -> `ylat`
+> color=factor(top_pop),
+Error: unexpected ',' in "color=factor(top_pop),"
+
+R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> install.packages("https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip", repos = NULL)
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip'
+Content type 'application/zip' length 5867237 bytes (5.6 MB)
+==================================================
+downloaded 5.6 MB
+
+Error in install.packages : type == "both" cannot be used with 'repos = NULL'
+> install.packages("https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip", repos = NULL)
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip'
+Content type 'application/zip' length 5867237 bytes (5.6 MB)
+==================================================
+downloaded 5.6 MB
+
+Error in install.packages : type == "both" cannot be used with 'repos = NULL'
+> install.packages("https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip")
+Warning in install.packages :
+  package ‘https://cran.rstudio.com/bin/windows/contrib/3.4/KoNLP_0.80.1.zip’ is not available (for R version 3.6.3)
+> install.packages("Sejong")
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/Sejong_0.01.tgz'
+Content type 'application/x-gzip' length 1615626 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("wordcloud")
+also installing the dependencies ‘RColorBrewer’, ‘Rcpp’
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/RColorBrewer_1.1-2.tgz'
+Content type 'application/x-gzip' length 53161 bytes (51 KB)
+==================================================
+downloaded 51 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/Rcpp_1.0.5.tgz'
+Content type 'application/x-gzip' length 3221298 bytes (3.1 MB)
+==================================================
+downloaded 3.1 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/wordcloud_2.6.tgz'
+Content type 'application/x-gzip' length 240231 bytes (234 KB)
+==================================================
+downloaded 234 KB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("tm")
+also installing the dependencies ‘NLP’, ‘slam’, ‘xml2’, ‘BH’
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/NLP_0.2-1.tgz'
+Content type 'application/x-gzip' length 389630 bytes (380 KB)
+==================================================
+downloaded 380 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/slam_0.1-47.tgz'
+Content type 'application/x-gzip' length 204039 bytes (199 KB)
+==================================================
+downloaded 199 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/xml2_1.3.2.tgz'
+Content type 'application/x-gzip' length 445682 bytes (435 KB)
+==================================================
+downloaded 435 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/BH_1.72.0-3.tgz'
+Content type 'application/x-gzip' length 11253901 bytes (10.7 MB)
+==================================================
+downloaded 10.7 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/tm_0.7-8.tgz'
+Content type 'application/x-gzip' length 1102575 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("hash")
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/hash_2.2.6.1.tgz'
+Content type 'application/x-gzip' length 136707 bytes (133 KB)
+==================================================
+downloaded 133 KB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("tau")
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/tau_0.0-21.tgz'
+Content type 'application/x-gzip' length 180346 bytes (176 KB)
+==================================================
+downloaded 176 KB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("RSQLite")
+also installing the dependencies ‘ellipsis’, ‘glue’, ‘bit’, ‘rlang’, ‘vctrs’, ‘digest’, ‘bit64’, ‘blob’, ‘DBI’, ‘memoise’, ‘pkgconfig’, ‘plogr’
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/ellipsis_0.3.1.tgz'
+Content type 'application/x-gzip' length 33571 bytes (32 KB)
+==================================================
+downloaded 32 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/glue_1.4.2.tgz'
+Content type 'application/x-gzip' length 138799 bytes (135 KB)
+==================================================
+downloaded 135 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/bit_4.0.4.tgz'
+Content type 'application/x-gzip' length 694343 bytes (678 KB)
+==================================================
+downloaded 678 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rlang_0.4.8.tgz'
+Content type 'application/x-gzip' length 1211391 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/vctrs_0.3.5.tgz'
+Content type 'application/x-gzip' length 1404856 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/digest_0.6.27.tgz'
+Content type 'application/x-gzip' length 299338 bytes (292 KB)
+==================================================
+downloaded 292 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/bit64_4.0.5.tgz'
+Content type 'application/x-gzip' length 582202 bytes (568 KB)
+==================================================
+downloaded 568 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/blob_1.2.1.tgz'
+Content type 'application/x-gzip' length 45465 bytes (44 KB)
+==================================================
+downloaded 44 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/DBI_1.1.0.tgz'
+Content type 'application/x-gzip' length 586234 bytes (572 KB)
+==================================================
+downloaded 572 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/memoise_1.1.0.tgz'
+Content type 'application/x-gzip' length 35030 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/pkgconfig_2.0.3.tgz'
+Content type 'application/x-gzip' length 17573 bytes (17 KB)
+==================================================
+downloaded 17 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/plogr_0.2.0.tgz'
+Content type 'application/x-gzip' length 13178 bytes (12 KB)
+==================================================
+downloaded 12 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/RSQLite_2.2.1.tgz'
+Content type 'application/x-gzip' length 4081924 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("rJava")
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rJava_0.9-13.tgz'
+Content type 'application/x-gzip' length 735775 bytes (718 KB)
+==================================================
+downloaded 718 KB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+> install.packages("devtools")
+also installing the dependencies ‘utf8’, ‘pillar’, ‘sys’, ‘ini’, ‘tibble’, ‘lazyeval’, ‘base64enc’, ‘later’, ‘askpass’, ‘highr’, ‘markdown’, ‘xfun’, ‘diffobj’, ‘clipr’, ‘crayon’, ‘curl’, ‘fs’, ‘gh’, ‘git2r’, ‘purrr’, ‘rematch2’, ‘rprojroot’, ‘whisker’, ‘yaml’, ‘processx’, ‘R6’, ‘assertthat’, ‘fansi’, ‘rex’, ‘htmltools’, ‘htmlwidgets’, ‘magrittr’, ‘crosstalk’, ‘promises’, ‘mime’, ‘openssl’, ‘prettyunits’, ‘xopen’, ‘brew’, ‘commonmark’, ‘knitr’, ‘stringi’, ‘stringr’, ‘brio’, ‘evaluate’, ‘lifecycle’, ‘praise’, ‘ps’, ‘waldo’, ‘usethis’, ‘callr’, ‘cli’, ‘covr’, ‘desc’, ‘DT’, ‘httr’, ‘jsonlite’, ‘pkgbuild’, ‘pkgload’, ‘rcmdcheck’, ‘remotes’, ‘roxygen2’, ‘rstudioapi’, ‘rversions’, ‘sessioninfo’, ‘testthat’, ‘withr’
+
+
+  There are binary
+  versions available but
+  the source versions are
+  later:
+       binary source
+pillar  1.4.6  1.4.7
+cli     2.1.0  2.2.0
+       needs_compilation
+pillar             FALSE
+cli                FALSE
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/utf8_1.1.4.tgz'
+Content type 'application/x-gzip' length 196648 bytes (192 KB)
+==================================================
+downloaded 192 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/sys_3.4.tgz'
+Content type 'application/x-gzip' length 47455 bytes (46 KB)
+==================================================
+downloaded 46 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/ini_0.3.1.tgz'
+Content type 'application/x-gzip' length 13465 bytes (13 KB)
+==================================================
+downloaded 13 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/tibble_3.0.4.tgz'
+Content type 'application/x-gzip' length 393035 bytes (383 KB)
+==================================================
+downloaded 383 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/lazyeval_0.2.2.tgz'
+Content type 'application/x-gzip' length 158838 bytes (155 KB)
+==================================================
+downloaded 155 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/base64enc_0.1-3.tgz'
+Content type 'application/x-gzip' length 32230 bytes (31 KB)
+==================================================
+downloaded 31 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/later_1.1.0.1.tgz'
+Content type 'application/x-gzip' length 637781 bytes (622 KB)
+==================================================
+downloaded 622 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/askpass_1.1.tgz'
+Content type 'application/x-gzip' length 21926 bytes (21 KB)
+==================================================
+downloaded 21 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/highr_0.8.tgz'
+Content type 'application/x-gzip' length 41180 bytes (40 KB)
+==================================================
+downloaded 40 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/markdown_1.1.tgz'
+Content type 'application/x-gzip' length 199930 bytes (195 KB)
+==================================================
+downloaded 195 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/xfun_0.19.tgz'
+Content type 'application/x-gzip' length 289282 bytes (282 KB)
+==================================================
+downloaded 282 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/diffobj_0.3.2.tgz'
+Content type 'application/x-gzip' length 976443 bytes (953 KB)
+==================================================
+downloaded 953 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/clipr_0.7.1.tgz'
+Content type 'application/x-gzip' length 48928 bytes (47 KB)
+==================================================
+downloaded 47 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/crayon_1.3.4.tgz'
+Content type 'application/x-gzip' length 749917 bytes (732 KB)
+==================================================
+downloaded 732 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/curl_4.3.tgz'
+Content type 'application/x-gzip' length 741337 bytes (723 KB)
+==================================================
+downloaded 723 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/fs_1.5.0.tgz'
+Content type 'application/x-gzip' length 548586 bytes (535 KB)
+==================================================
+downloaded 535 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/gh_1.1.0.tgz'
+Content type 'application/x-gzip' length 109951 bytes (107 KB)
+==================================================
+downloaded 107 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/git2r_0.27.1.tgz'
+Content type 'application/x-gzip' length 2075712 bytes (2.0 MB)
+==================================================
+downloaded 2.0 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/purrr_0.3.4.tgz'
+Content type 'application/x-gzip' length 417113 bytes (407 KB)
+==================================================
+downloaded 407 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rematch2_2.1.2.tgz'
+Content type 'application/x-gzip' length 44884 bytes (43 KB)
+==================================================
+downloaded 43 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rprojroot_2.0.2.tgz'
+Content type 'application/x-gzip' length 96283 bytes (94 KB)
+==================================================
+downloaded 94 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/whisker_0.4.tgz'
+Content type 'application/x-gzip' length 65424 bytes (63 KB)
+==================================================
+downloaded 63 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/yaml_2.2.1.tgz'
+Content type 'application/x-gzip' length 204091 bytes (199 KB)
+==================================================
+downloaded 199 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/processx_3.4.4.tgz'
+Content type 'application/x-gzip' length 278911 bytes (272 KB)
+==================================================
+downloaded 272 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/R6_2.5.0.tgz'
+Content type 'application/x-gzip' length 82507 bytes (80 KB)
+==================================================
+downloaded 80 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/assertthat_0.2.1.tgz'
+Content type 'application/x-gzip' length 53625 bytes (52 KB)
+==================================================
+downloaded 52 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/fansi_0.4.1.tgz'
+Content type 'application/x-gzip' length 210779 bytes (205 KB)
+==================================================
+downloaded 205 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rex_1.2.0.tgz'
+Content type 'application/x-gzip' length 120540 bytes (117 KB)
+==================================================
+downloaded 117 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/htmltools_0.5.0.tgz'
+Content type 'application/x-gzip' length 219957 bytes (214 KB)
+==================================================
+downloaded 214 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/htmlwidgets_1.5.2.tgz'
+Content type 'application/x-gzip' length 257292 bytes (251 KB)
+==================================================
+downloaded 251 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/magrittr_2.0.1.tgz'
+Content type 'application/x-gzip' length 225659 bytes (220 KB)
+==================================================
+downloaded 220 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/crosstalk_1.1.0.1.tgz'
+Content type 'application/x-gzip' length 773704 bytes (755 KB)
+==================================================
+downloaded 755 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/promises_1.1.1.tgz'
+Content type 'application/x-gzip' length 1440722 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/mime_0.9.tgz'
+Content type 'application/x-gzip' length 35386 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/openssl_1.4.3.tgz'
+Content type 'application/x-gzip' length 2701967 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/prettyunits_1.1.1.tgz'
+Content type 'application/x-gzip' length 35656 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/xopen_1.0.0.tgz'
+Content type 'application/x-gzip' length 22742 bytes (22 KB)
+==================================================
+downloaded 22 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/brew_1.0-6.tgz'
+Content type 'application/x-gzip' length 107066 bytes (104 KB)
+==================================================
+downloaded 104 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/commonmark_1.7.tgz'
+Content type 'application/x-gzip' length 313454 bytes (306 KB)
+==================================================
+downloaded 306 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/knitr_1.30.tgz'
+Content type 'application/x-gzip' length 1392687 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/stringi_1.5.3.tgz'
+Content type 'application/x-gzip' length 13632372 bytes (13.0 MB)
+==================================================
+downloaded 13.0 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/stringr_1.4.0.tgz'
+Content type 'application/x-gzip' length 213304 bytes (208 KB)
+==================================================
+downloaded 208 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/brio_1.1.0.tgz'
+Content type 'application/x-gzip' length 36843 bytes (35 KB)
+==================================================
+downloaded 35 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/evaluate_0.14.tgz'
+Content type 'application/x-gzip' length 74657 bytes (72 KB)
+==================================================
+downloaded 72 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/lifecycle_0.2.0.tgz'
+Content type 'application/x-gzip' length 91621 bytes (89 KB)
+==================================================
+downloaded 89 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/praise_1.0.0.tgz'
+Content type 'application/x-gzip' length 16379 bytes (15 KB)
+==================================================
+downloaded 15 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/ps_1.4.0.tgz'
+Content type 'application/x-gzip' length 252772 bytes (246 KB)
+==================================================
+downloaded 246 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/waldo_0.2.3.tgz'
+Content type 'application/x-gzip' length 70421 bytes (68 KB)
+==================================================
+downloaded 68 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/usethis_1.6.3.tgz'
+Content type 'application/x-gzip' length 583428 bytes (569 KB)
+==================================================
+downloaded 569 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/callr_3.5.1.tgz'
+Content type 'application/x-gzip' length 385977 bytes (376 KB)
+==================================================
+downloaded 376 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/covr_3.5.1.tgz'
+Content type 'application/x-gzip' length 289072 bytes (282 KB)
+==================================================
+downloaded 282 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/desc_1.2.0.tgz'
+Content type 'application/x-gzip' length 288062 bytes (281 KB)
+==================================================
+downloaded 281 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/DT_0.16.tgz'
+Content type 'application/x-gzip' length 1609897 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/httr_1.4.2.tgz'
+Content type 'application/x-gzip' length 500962 bytes (489 KB)
+==================================================
+downloaded 489 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/jsonlite_1.7.1.tgz'
+Content type 'application/x-gzip' length 1123131 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/pkgbuild_1.1.0.tgz'
+Content type 'application/x-gzip' length 139478 bytes (136 KB)
+==================================================
+downloaded 136 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/pkgload_1.1.0.tgz'
+Content type 'application/x-gzip' length 151129 bytes (147 KB)
+==================================================
+downloaded 147 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rcmdcheck_1.3.3.tgz'
+Content type 'application/x-gzip' length 132445 bytes (129 KB)
+==================================================
+downloaded 129 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/remotes_2.2.0.tgz'
+Content type 'application/x-gzip' length 386257 bytes (377 KB)
+==================================================
+downloaded 377 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/roxygen2_7.1.1.tgz'
+Content type 'application/x-gzip' length 977112 bytes (954 KB)
+==================================================
+downloaded 954 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rstudioapi_0.13.tgz'
+Content type 'application/x-gzip' length 273086 bytes (266 KB)
+==================================================
+downloaded 266 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/rversions_2.0.2.tgz'
+Content type 'application/x-gzip' length 66020 bytes (64 KB)
+==================================================
+downloaded 64 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/sessioninfo_1.1.1.tgz'
+Content type 'application/x-gzip' length 44783 bytes (43 KB)
+==================================================
+downloaded 43 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/testthat_3.0.0.tgz'
+Content type 'application/x-gzip' length 2869288 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/withr_2.3.0.tgz'
+Content type 'application/x-gzip' length 205724 bytes (200 KB)
+==================================================
+downloaded 200 KB
+
+trying URL 'https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/devtools_2.3.2.tgz'
+Content type 'application/x-gzip' length 337251 bytes (329 KB)
+==================================================
+downloaded 329 KB
+
+
+The downloaded binary packages are in
+	/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T//RtmpEbHa6N/downloaded_packages
+installing the source packages ‘pillar’, ‘cli’
+
+trying URL 'https://cran.rstudio.com/src/contrib/pillar_1.4.7.tar.gz'
+Content type 'application/x-gzip' length 113345 bytes (110 KB)
+==================================================
+downloaded 110 KB
+
+trying URL 'https://cran.rstudio.com/src/contrib/cli_2.2.0.tar.gz'
+Content type 'application/x-gzip' length 120676 bytes (117 KB)
+==================================================
+downloaded 117 KB
+
+* installing *source* package ‘cli’ ...
+** package ‘cli’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (cli)
+* installing *source* package ‘pillar’ ...
+** package ‘pillar’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (pillar)
+
+The downloaded source packages are in
+	‘/private/var/folders/ph/pr194wc94y5d5jgyyfcl1w1m0000gn/T/RtmpEbHa6N/downloaded_packages’
